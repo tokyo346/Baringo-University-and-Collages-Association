@@ -1,0 +1,622 @@
+<!DOCTYPE html><html lang="en"><head>
+    <!-- Meta Data -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title> Home - Baringo County Students Association</title>
+
+    <!-- icons & favicons -->
+    <link rel="icon" type="image/x-icon" href="images/favicont.png">
+
+    <!-- Dependency Styles -->
+    <link id="style-bundle" rel="stylesheet" href="css/bundle.css" type="text/css">
+
+    <!-- Site Stylesheet -->
+    <link id="cbx-style" rel="stylesheet" href="css/style-default.css" type="text/css">
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Link to the web app manifest -->
+    <link rel="manifest" href="manifest.json"> 
+
+
+</head>
+<head>
+  <!-- meta tags, title, and other links here -->
+
+  <!-- Your custom CSS -->
+  <style>
+    body {
+      background-color: cadetblue;
+      background-image: url;
+      background-size:  no repeat;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  </style>
+
+</head>
+
+<body id="home-v1" class="home-page-one" data-style="default">  
+    <a href="#" class="scroll-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+
+    <div id="main_content" class="main-content">
+
+
+        <!--=========================-->
+        <!--=        Navbar         =-->
+        <!--=========================-->
+        <header class="site-header header-fixed" data-responsive-width="991">
+    <div class="header-topbar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-sm-7 col-7">
+                    <div class="preheader-left">
+                        <a href="mailto:info@Baringocountystudents030@gmail.com"><strong>Email:</strong> info@Baringocountystudents030@gmail.com</a>
+                        <a href="tel:0726080014"><strong>Hotline:</strong> +254 726080014</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-5 col-5 text-end">
+                    <div class="preheader-right">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.header-topbar -->
+
+    <div class="container">
+        <div class="header-inner">
+            <nav id="site-navigation" class="main-nav">
+                <div class="site-logo d-flex align-items-center">
+                    <a href="index" class="logo d-flex align-items-center">
+                        <img src="images/logo.jpeg" alt="site logo" class="main-logo" style="height:100px; width:100px;">
+                        <img src="images/logo.jpeg" alt="site logo" class="logo-sticky" style="height:100px; width:100px;">
+                        <h1 style="margin: 0 0 0 10px; font-size: 2rem;">BUSCA</h1>
+                    </a>
+                
+                    <div class="burger-menu">
+                        <span class="bar-one"></span>
+                        <span class="bar-two"></span>
+                        <span class="bar-three"></span>
+                    </div>
+                </div>
+                <!-- /.site-logo -->
+
+
+                <div class="menu-wrapper main-nav-container canvas-menu-wrapper" id="mega-menu-wrap">
+                    <div class="canvas-header">
+                        <div class="mobile-offcanvas-logo d-flex align-items-center">
+                            <a href="index" class="me-2">
+                                <img src="images/logo.jpeg" alt="site logo" class="logo-sticky" style="height:100px; width:100px;">
+                            </a>
+                            <h1 style="margin: 0; font-size: 2rem;">BUSCA</h1>
+                        </div>
+
+
+                        <div class="close-menu" id="page-close-main-menu">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+
+                    <ul class="codeboxr-main-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="committee.html">Team</a></li>
+                        
+                        <li class="menu-item-depth-0">
+                            <a href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.menu-wrapper -->
+            </nav>
+            <!-- /.site-nav -->
+        </div>
+        <!-- /.header-inner -->
+    </div>
+    <!-- /.container-full -->
+</header><!-- 
+    Author: Issa Kipyegon
+    Description: This script demonstrates how to prompt the user to install a Progressive Web App (PWA).
+    The modal appears when the `beforeinstallprompt` event is fired, allowing the user to install the app or dismiss the prompt.
+    It includes:
+        - A modal with install and cancel buttons
+        - A SweetAlert2 popup for user feedback
+        - Registration of a service worker for offline functionality
+-->
+
+<!-- Include SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+    /* Styling for the modal (install button) */
+    #installModal {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(100%);
+        transition: transform 0.5s ease-in-out;
+        padding: 20px;
+        text-align: center;
+        z-index: 9999;
+    }
+
+    #installModal.show {
+        transform: translateY(0);
+    }
+
+    #installButton, #cancelButton {
+        padding: 15px 30px;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+        margin: 10px;
+        transition: background-color 0.3s;
+    }
+
+    #installButton:hover, #cancelButton:hover {
+        background-color: #0056b3;
+    }
+
+    #cancelButton {
+        background-color: #dc3545;
+    }
+
+    #installLogo {
+        max-width: 100%;
+        margin-bottom: 20px; /* Space between logo and buttons */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+</style>
+
+<!-- Modal for Installation -->
+<div id="installModal">
+    <!-- Logo -->
+    <img id="instalLogo" src="images/ttsawhite.svg" alt="App Logo">
+    <!-- Install Button -->
+    <button id="installButton">Install App</button>
+    <!-- Cancel Button -->
+    <button id="cancelButton">Cancel</button>
+</div>
+
+<!-- Register Service Worker -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(() => console.log('Service Worker registered successfully.'))
+      .catch(error => console.error('Service Worker registration failed:', error));
+  }
+</script>
+
+<!-- Before Install Prompt -->
+<script>
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the default mini-infobar or native prompt from showing
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Show the install modal
+        const installModal = document.getElementById('installModal');
+        installModal.classList.add('show'); // Show the modal
+
+        // Handle click on install button
+        const installButton = document.getElementById('installButton');
+        installButton.addEventListener('click', () => {
+            // Show the install prompt to the user
+            deferredPrompt.prompt();       
+
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Installation Accepted',
+                        text: 'User accepted the installation!',
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Installation Dismissed',
+                        text: 'User dismissed the installation.',
+                    });
+                }
+                // Reset the deferred prompt variable after use
+                deferredPrompt = null;
+                installModal.classList.remove('show'); // Hide the modal after interaction
+            });
+        });
+
+        // Handle click on cancel button
+        const cancelButton = document.getElementById('cancelButton');
+        cancelButton.addEventListener('click', () => {
+            // Close the modal if the user clicks cancel
+            installModal.classList.remove('show');
+        });
+    });
+</script>
+        <!-- /.site-header -->
+
+
+        <!--==========================-->
+        <!--=         Banner         =-->
+        <!--==========================-->
+        <section id="slider-area">
+            <div class="slider-active-wrap owl-carousel text-center text-md-start">
+
+                <div class="single-slide-wrap slide-bg-1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="slider-content">
+                                    <p><span>
+                                        Baringo countyStudents Association (BUSCA) is a registered, student-led organization uniting learners from Baringo County across public and private universities, colleges, and TVET institutions in Kenya. Founded in 2022, BUSCA champions the welfare and development of students by providing a structured platform for engagement, representation, and support. We uphold values of integrity, inclusivity, and leadership, serving as a collective voice for students in academic, social, and county matters.
+                                    </span></p>
+                                    <!--<div class="slider-btn">-->
+                                        <!--<a href="committee" class="btn btn-brand smooth-scroll">Our Officials</a>-->
+                                    <!--    <a href="projects" class="btn btn-brand-rev">Our Projects</a>-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="single-slide-wrap slide-bg-2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="slider-content">
+                                    <p><span>
+                                        BUSCA operates as a transformative platform where students can thrive through leadership training, career development, and active civic engagement. Our programs include mentorship initiatives, annual general meetings, cultural showcases, county development forums, and advocacy on education policies. By fostering partnerships with the county government, NGOs, and institutions, we create opportunities that empower students to contribute meaningfully to their communities and beyond.
+                                    </span></p>
+                                    <!--<div class="slider-btn">-->
+                                        <!--<a href="committee" class="btn btn-brand smooth-scroll">Our Officials</a>-->
+                                    <!--    <a href="projects" class="btn btn-brand-rev">Our Projects</a>-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+                </div>
+    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Event -->
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=========================-->
+        <!--=         About         =-->
+        <!--=========================-->
+        <section id="about-area" class="section-padding">
+            <div class="about-area-wrapper">
+                <div class="container">
+                    <div class="row justify-content-end">
+                        <div class="col-lg-10">
+                            <div class="about-content-wrap">
+                                <div class="section-title text-lg-left">
+                                    <h2>Our Mission</h2>
+                                </div>
+
+                                <div class="about-thumb">  
+                                    <img src="images/goo.jpeg" alt="" class="img-fluid">
+                                </div>
+
+                                <p>
+                                    To unite, empower, and represent students from Baringo County by fostering academic excellence, leadership development, cultural identity, and strategic partnerships. BUSCA is committed to addressing common student challenges, advocating for student welfare, and serving as a bridge between learners and key stakeholders, including government and development partners.
+                                </p>
+                                
+                                <a href="about.html" class="btn btn-brand about-btn">know more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=================================-->
+        <!--=         Responsibility        =-->
+        <!--=================================-->
+        <section id="responsibility-area" class="section-padding">
+            <div class="container">
+                <!--== Section Title Start ==-->
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="section-title">
+                            <h2>Our Services</h2>
+                        </div>
+                    </div>
+                </div>
+                <!--== Section Title End ==-->
+
+                <!--== Responsibility Content Wrapper ==-->
+                <div class="row text-center text-sm-left">
+                    <!--== Single Responsibility Start ==-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-responsibility">
+                            <img src="images/01.png" alt="Responsibility">
+                            <h4>Scholarship Advocacy</h4>
+                            <p>We actively lobby for increased bursary allocations and fair distribution processes to ensure that deserving students from Baringo County receive the financial support they need to pursue higher education.</p>
+                        </div>
+                    </div>
+                    <!--== Single Responsibility End ==-->
+
+                    <!--== Single Responsibility Start ==-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-responsibility">
+                            <img src="images/02.png" alt="Responsibility">
+                            <h4>Student Support & Mentorship</h4>
+                            <p>BUSCA supports current students through mentorship programs, peer networks, and outreach initiatives that address academic, social, and personal development needs.</p>
+                        </div>
+                    </div>
+                    <!--== Single Responsibility End ==-->
+
+                    <!--== Single Responsibility Start ==-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-responsibility">
+                            <img src="images/03.png" alt="Responsibility">
+                            <h4>Institutional Engagement</h4>
+                            <p>We collaborate with universities, colleges, and TVET institutions to represent student interests, enhance communication, and improve the student experience across institutions.</p>
+                        </div>
+                    </div>
+                    <!--== Single Responsibility End ==-->
+
+                    <!--== Single Responsibility Start ==-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-responsibility">
+                            <img src="images/04.png" alt="Responsibility">
+                            <h4>Community Empowerment</h4>
+                            <p>By organizing cultural events, youth forums, and community outreach activities, BUSCA strengthens ties between students and the county, fostering pride, leadership, and collective progress.</p>
+                        </div>
+                    </div>
+                    <!--== Single Responsibility End ==-->
+                </div>
+                <!--== Responsibility Content Wrapper ==-->
+            </div>
+        </section>
+
+        <!--================================-->
+        <!--=         Fun Fact        =-->
+        <!--================================-->
+        <section id="funfact-area">
+            <div class="container-fluid">
+                <div class="row text-center">
+                    <!--== Single FunFact Start ==-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-funfact-wrap">
+                            <div class="funfact-icon">
+                                <img src="images/user.svg" alt="Funfact">
+                            </div>
+                            <div class="funfact-info">
+                                <h5><span class="funfact-count">1500</span>+</h5>
+                                <p>Members</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--== Single FunFact End ==-->
+
+                    <!--== Single FunFact Start ==-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-funfact-wrap">
+                            <div class="funfact-icon">
+                                <img src="images/event.svg" alt="Funfact">
+                            </div>
+                            <div class="funfact-info">
+                                <h5><span class="funfact-count">125</span>+</h5>
+                                <p>Events</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--== Single FunFact End ==-->
+
+                    <!--== Single FunFact Start ==-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-funfact-wrap">
+                            <div class="funfact-icon">
+                                <img src="images/medal.svg" alt="Funfact">
+                            </div>
+                            <div class="funfact-info">
+                                <h5><span class="funfact-count">15</span>+</h5>
+                                <p>Awards</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--== Single FunFact End ==-->
+                    
+                    <!--== Single FunFact Start ==-->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-funfact-wrap">
+                            <div class="funfact-icon">
+                                
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <!--== Single FunFact End ==-->
+                </div>
+            </div>
+        </section>
+
+        <!--=======================-->
+        <!--=         Blog        =-->
+        <!--=======================-->
+        <section id="blog-area" class="section-padding">
+            <div class="container">
+                <!--== Section Title Start ==-->
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="section-title">
+                            <h2>Recent News</h2>
+                        </div>
+                    </div>
+                </div>
+                <!--== Section Title End ==-->
+
+                <!--== Blog Content Wrapper ==-->
+                <div class="row">
+                                       <p>will do addons apoun summon</p>
+                            </div>
+                        </article>
+                    </div>
+                    <!--== Single Blog Post End ==-->
+                                    </div>
+                <!--== Blog Content Wrapper ==-->
+            </div>
+        </section>
+
+        <!--=========================-->
+        <!--=        Footer         =-->
+        <!--=========================-->
+        <footer id="footer-area">
+        <!-- Footer Widget Start -->
+        <div class="footer-widget section-padding">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Widget Start -->
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="single-widget-wrap">
+                            <div class="widgei-body">
+                                <div class="footer-about">
+                                    <img src="images/logo.jpeg" alt="Logo" class="img-fluid" style="height:100px; width:100px;">
+                                    <p>
+                                        Baringo County Students Association (BUSCA) promotes unity, empowerment, and growth among students from Baringo County. We support leadership, mentorship, and access to opportunities through community and institutional partnerships.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Widget End -->
+
+                    <!-- Single Widget Start -->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-widget-wrap">
+                            <h4 class="widget-title">Get In Touch</h4>
+                            <div class="widgei-body">
+                                <p>
+                                    Subscribe to our newsletter and stay updated with the latest BUSCA news, events, and student opportunities.
+                                </p>
+                                <div class="newsletter-form">
+                                    <form id="cbx-subscribe-form">
+                                        <input name="email" type="email" placeholder="Enter Your Email" id="subscribe" required="">
+                                        <button type="submit">
+                                            <i class="far fa-paper-plane"></i>
+                                        </button>
+
+                                        <p id="cbx-subscribe-form-error"></p>
+                                    </form>
+                                </div>
+                                <div class="footer-social-icons">
+                                  <a href="https://www.facebook.com/keshy77098" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://x.com/BUCSA_BARINGO?t=MYd_H_YvHEwdk2HOOpDGqA&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://tiktok.com/@bucsa62" target="_blank"><i class="fab fa-tiktok"></i></a>
+                                     <a href="https://whatsapp.com/channel/0029VbAcZAM9MF8zjD5nvY2v" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Widget End -->
+
+                    <!-- Single Widget Start -->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-widget-wrap">
+                            <h4 class="widget-title">Useful Link</h4>
+                            <div class="widgei-body">
+                                <ul class="double-list footer-list clearfix">
+                                    <li><a href="index.html">Homepage</a></li>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="events.html">Events</a></li>
+                                    <li><a href="gallery.html">Gallery</a></li>
+                                    <li><a href="blog.html">Blogs</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Widget End -->
+
+                    <!-- Single Widget Start -->
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="single-widget-wrap">
+                            <h4 class="widget-title">BUSCA</h4>
+                            <div class="widgei-body">
+                                <ul class="footer-list clearfix">
+                                
+                                    <li><a href="committee.html">Our Team</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Widget End -->
+                </div>
+            </div>
+        </div>
+        <!-- Footer Widget End -->
+
+        <!-- Footer Bottom Start -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="footer-bottom-text">
+                            <p>
+                                © Copyright <b>Baringo County Students Association</b>, All Rights Reserved.
+                                <br>
+                                Designed by <b>Issa Kipyegon</b>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom End -->
+    </footer>
+
+
+    </div>
+    <!-- /#site -->
+
+
+    <!-- Dependency Scripts -->
+    <script id="script-bundle" src="js/bundle.js"></script>
+
+    <!-- Site Scripts -->
+    <script src="js/app.js"></script>
+
+
+
+
+
+</body></html>
