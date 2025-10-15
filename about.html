@@ -30,6 +30,91 @@
       background-repeat: no-repeat;
       background-position: center;
     }
+     /* ---------- MOBILE MENU STYLES ---------- */
+@media (max-width: 768px) {
+  /* Hide main menu, show burger icon */
+  .main-nav-container {
+    display: none;
+  }
+
+  .burger-menu {
+    display: block !important;
+    width: 30px;
+    cursor: pointer;
+  }
+
+  .burger-menu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #002244;
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Active (X) animation */
+  .burger-menu.active .bar-one {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .burger-menu.active .bar-two {
+    opacity: 0;
+  }
+
+  .burger-menu.active .bar-three {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* When active, show menu */
+  .main-nav-container.active {
+    display: block;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 80%;
+    background-color: #002244;
+    padding: 20px;
+    z-index: 999;
+    border-radius: 10px 0 0 10px;
+    animation: slideIn 0.3s ease forwards;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(100%); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .main-nav-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-nav-container ul li {
+    margin: 15px 0;
+    text-align: right;
+  }
+
+  .main-nav-container ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  /* Stack header info vertically */
+  .header-topbar .row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .preheader-left a {
+    display: block;
+    margin: 5px 0;
+  }
+}
+ 
   </style>
 
 </head>
@@ -444,6 +529,17 @@
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const burger = document.querySelector(".burger-menu");
+  const menu = document.querySelector(".main-nav-container");
+
+  burger.addEventListener("click", function() {
+    burger.classList.toggle("active");
+    menu.classList.toggle("active");
+  });
+});
+</script>
 
 
 </body></html>
