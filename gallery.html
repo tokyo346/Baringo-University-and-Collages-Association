@@ -48,6 +48,99 @@
       background-repeat: no-repeat;
       background-position: center;
     }
+      /* -------------------- */
+/* MOBILE VIEW ONLY FIX */
+/* -------------------- */
+@media (max-width: 768px) {
+  /* Stack header-topbar items vertically */
+  .header-topbar .row {
+    flex-direction: column;
+    align-items: center !important;
+    text-align: center;
+  }
+
+  .preheader-left a {
+    display: block;
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+  /* Adjust logo and heading size */
+  .site-logo img {
+    height: 70px !important;
+    width: 70px !important;
+  }
+
+  .site-logo h1 {
+    font-size: 1.4rem !important;
+    margin-left: 5px !important;
+  }
+
+  /* Make burger menu visible and functional */
+  .burger-menu {
+    display: block !important;
+    cursor: pointer;
+  }
+
+  .canvas-menu-wrapper {
+    display: none;
+  }
+
+  .canvas-menu-wrapper.active {
+    display: block;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background: #004080;
+    width: 80%;
+    padding: 20px;
+    z-index: 1000;
+  }
+
+  .canvas-menu-wrapper ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .canvas-menu-wrapper ul li {
+    margin: 10px 0;
+    text-align: right;
+  }
+
+  .canvas-menu-wrapper ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  /* Fix gallery layout on phones */
+  .single-album-wraper {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .single-album-wraper img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Footer readability */
+  .footer-widget .row {
+    text-align: center;
+  }
+
+  .footer-widget .col-lg-4,
+  .footer-widget .col-lg-3,
+  .footer-widget .col-lg-2 {
+    margin-bottom: 20px;
+  }
+
+  .footer-social-icons a {
+    display: inline-block;
+    margin: 0 5px;
+  }
+}
+
   </style>
 
 </head>
@@ -549,6 +642,18 @@
  
 
  
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener("DOMContentLoaded", function() {
+    const burger = document.querySelector(".burger-menu");
+    const menu = document.querySelector(".canvas-menu-wrapper");
+
+    burger.addEventListener("click", function() {
+      menu.classList.toggle("active");
+    });
+  });
+</script>
 
 </body></html> 
 
